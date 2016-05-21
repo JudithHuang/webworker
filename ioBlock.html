@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IO block and Web worker</title>
+</head>
+<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+<body class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">before use Web Worker</div>
+    <div class="panel-body">
+      <div class="btn btn-default" id="button">click me</div>
+    </div>
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      blockEventLoop();
+    });
+
+    var blockEventLoop = function() {
+      for (var i = 0; i < 10000; i ++) {
+        console.log('event loop is blocking...');
+      }
+    };
+
+    $('#button').click(function() {
+      alert('hello, you clicked button');
+    });
+  </script>
+</body>
+</html>

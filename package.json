@@ -1,0 +1,23 @@
+{
+  "name": "webworker",
+  "version": "0.0.0",
+  "description": "this is share about webworker",
+  "main": "eventLoop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/judithhuang/webworker.git"
+  },
+  "author": "Judith Huang",
+  "license": "1.0",
+  "bugs": {
+    "url": "https://github.com/judithhuang/webworker/issues"
+  },
+  "homepage": "https://github.com/judithhuang/webworker",
+  "devDependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.4"
+  }
+}
