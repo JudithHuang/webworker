@@ -6,27 +6,57 @@
 <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 <body class="container">
   <div class="panel panel-default">
-    <div class="panel-heading">before use Web Worker</div>
+    <div class="panel-heading">Test for Web Worker</div>
     <div class="panel-body">
-      <div class="btn btn-default" id="button">click me</div>
+      <div class="btn btn-default" onclick="onClick()">click me</div>
     </div>
   </div>
 
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript">
+    // before use web worker
+    /**
     $(function() {
       blockEventLoop();
     });
+    **/
+
+    // test Serialization
+
+    /**
+    var user = {
+      name: 'judith',
+      getName: function() {
+        return 'judith';
+      }
+    };
+    **/
+
+    // use web worker
+
+    var myWorker = new Worker("worker.js");
+
+    myWorker.onmessage = function (oEvent) {
+      console.log("Worker said : " + oEvent.data);
+    };
+
+    myWorker.onerror = function(error) {
+      console.log('error', error);
+    };
+
+    myWorker.postMessage("judith");
+
+    // myWorker.postMessage(user);
 
     var blockEventLoop = function() {
-      for (var i = 0; i < 10000; i ++) {
+      for (var i = 0; i < 13000; i ++) {
         console.log('event loop is blocking...');
       }
     };
 
-    $('#button').click(function() {
+    var onClick = function() {
       alert('hello, you clicked button');
-    });
+    };
   </script>
 </body>
 </html>
